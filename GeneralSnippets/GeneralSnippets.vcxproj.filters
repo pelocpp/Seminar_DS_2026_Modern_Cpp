@@ -657,10 +657,10 @@
     <ClCompile Include="Expected\Module_Expected.ixx">
       <Filter>Modules</Filter>
     </ClCompile>
-    <ClCompile Include="Seminar_01_Topic_XX.cpp">
+    <ClCompile Include="Seminar_01_Topic_References.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Seminar_02_Topic_YY.cpp">
+    <ClCompile Include="Seminar_02_Topic_Big_Three.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Seminar_03_Topic_ZZ.cpp">

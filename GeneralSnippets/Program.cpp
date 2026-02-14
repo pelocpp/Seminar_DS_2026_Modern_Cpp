@@ -11,8 +11,8 @@ import std;
 
 #pragma message(MessageText)
 
-void seminar_topic_xx();
-void seminar_topic_yy();
+void seminar_topic_01_references();
+void seminar_topic_02_big_three();
 void seminar_topic_zz();
 
 int main()
@@ -25,9 +25,9 @@ int main()
     // main entry points code snippets
     try
     {
-        //seminar_topic_xx();
-        //seminar_topic_yy();
-        //seminar_topic_zz();
+        seminar_topic_01_references();
+        //seminar_topic_02_big_three();
+        // seminar_topic_zz();
 
         //main_accumulate();
         //main_algorithms();
