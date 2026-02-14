@@ -11,6 +11,10 @@ import std;
 
 #pragma message(MessageText)
 
+void seminar_topic_xx();
+void seminar_topic_yy();
+void seminar_topic_zz();
+
 int main()
 {
     //extern int _main_modules();
@@ -21,6 +25,10 @@ int main()
     // main entry points code snippets
     try
     {
+        //seminar_topic_xx();
+        //seminar_topic_yy();
+        //seminar_topic_zz();
+
         //main_accumulate();
         //main_algorithms();
         //main_allocator();
