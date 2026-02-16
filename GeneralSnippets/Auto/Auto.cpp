@@ -12,6 +12,16 @@ namespace Auto_Examples {
 
         // type deduction / type inference
 
+        auto n = 123;
+
+        auto x = 0;
+
+        auto m = 123.456F;  // Typ Deduction
+                       // Typableitung
+
+
+        using namespace std::string_literals;
+
         auto a = 1;                  // int
         auto b = 7ul;                // unsigned long
         auto c = 2.0;                // double
@@ -29,11 +39,12 @@ namespace Auto_Examples {
         // C++ 23 and above we have std::size_t and signed std::size_t
         // Not yet supported from Visual C++ Intellisense
         auto k = 1uz;                // std::size_t
-        auto m = 1z;                 // signed std::size_t
+        auto m2 = 1z;                 // signed std::size_t
     }
 
     // ---------------------------------------------------------------------
 
+    // STL
     static std::map<int, std::string> getFunction() {
 
         return {};
@@ -43,7 +54,7 @@ namespace Auto_Examples {
 
         auto n{ 123 };                   // n is type of int
 
-        auto result{ getFunction() };    // result is type of ...
+        auto result = getFunction();    // result is type of ...
 
         std::map<int, std::string> result2 {
             getFunction()
@@ -54,14 +65,17 @@ namespace Auto_Examples {
 
     static void test_03() {
 
+        // Hash-Tabelle // Dictionary: Schlüssel // Wert
         std::map<int, std::string> anotherMap{ { 1, "Hello"  } };
 
         std::map<int, std::string>::iterator it = anotherMap.begin();
 
-        // std::pair<int, std::string>& entry1 = *it;  // Why this line DOES NOT compile ???
+       // std::pair<int, std::string>& entry1 = *it;  // Why this line DOES NOT compile ???
 
         auto& entry2 = *it;
     }
+
+
 
     // ---------------------------------------------------------------------
 
@@ -70,15 +84,61 @@ namespace Auto_Examples {
         return f1 + f2;
     }
 
-    static auto foo(bool flag, float f, double d) -> double
+    static auto sum2(double f1, double f2)
+    {
+        return f1 + f2;
+    }
+
+    static auto sum3(short f1, short f2)
+    {
+        return f1 + f2;
+    }
+
+    //static auto foo(bool flag, float f, double d) -> double
+    //{
+    //    if (flag) {
+    //        return d;
+    //    }
+    //    else {
+    //        return f;
+    //    }
+    //}
+
+    // template <typename T1, typename T2>
+    //static auto fooSeminar(bool flag, T1 f, T2 d)  -> decltype(f + d)
+    //{
+    //    if (flag) {
+    //        return d;
+    //    }
+    //    else {
+    //        return f;
+    //    }
+    //}
+
+    template <typename T1, typename T2>
+
+    static decltype ( std::declval<T1>() + std::declval<T2>() )
+        
+        fooSeminar(bool flag, T1 f, T2 d)
     {
         if (flag) {
-            return f;
-        }
-        else {
             return d;
         }
+        else {
+            return f;
+        }
     }
+
+    void test_seminar_auto()
+    {
+      auto result = fooSeminar(false, 123, 45);
+    }
+
+
+
+
+
+    // Why               
 
     // type of the ternary ?: expression is the common type
     // of its second and third argument
@@ -92,7 +152,7 @@ namespace Auto_Examples {
 
         auto result = sum(1.0, 2.0);                           // float
 
-        auto value = foo(true, 123, 123.456);                  // double
+    //    auto value = foo(true, 123, 123.456);                  // double
 
         auto anotherValue = moreFoolish(true, 123, 123.456);   // double
     }
@@ -151,12 +211,27 @@ namespace Auto_Examples {
         const std::string& getName() { return m_name; }
     };
 
+
+
+
     static void test_06() {
 
         Person hans{ "Hans" };
 
-        auto name1{ hans.getName() };
+        std::string n = hans.getName();  // Bad
+        const std::string& nr = hans.getName(); // Good
+
+
+
+
+        auto name1 = hans.getName();
         std::println("Message: {}", name1);
+
+
+
+
+
+
 
         // but:
         const auto& name2{ hans.getName() };
@@ -250,6 +325,9 @@ namespace Auto_Examples {
 void main_auto()
 {
     using namespace Auto_Examples;
+
+    test_seminar_auto();
+
     test_01();
     test_02();
     test_03();

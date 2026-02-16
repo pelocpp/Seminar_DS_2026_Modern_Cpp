@@ -7,3 +7,291 @@ Peter Loos
 Guten Morgen
 
 =====================================================================
+
+C++:
+
+        std::string a = "Hello";
+        std::string& ra = a;
+
+        std::string* pa = new std::string("ABC");
+        delete pa;
+
+C++:    Wert-basiert
+        Referenz-basiert
+        Dynamische Daten // new / delete
+
+C#:     Referenz-basiert
+
+C#:     String s = new String();
+        "Alles" liegt am HEAP
+
+                int m = value;
+00007FF71E6D0B4F  mov         eax,dword ptr [value]  
+00007FF71E6D0B55  mov         dword ptr [m],eax  
+
+
+        int m = value;
+00007FF71E6D0B00  mov         rax,qword ptr [value]  
+00007FF71E6D0B07  mov         eax,dword ptr [rax]  
+00007FF71E6D0B09  mov         dword ptr [m],eax  
+
+
+Rule-of-Three:
+==============
+
+a) Wertzuweisungs-Operator
+
+b) Kopier-Konstruktor
+
+c) Destruktor
+
+Wann: Wenn in der Klasse Pointer (new/delete)
+
+m_data = new int[m_size]; // "array-new"
+ 
+========================================================
+
+Whyyyyyyyyyyyyyyyyyyyyy
+
+C++:
+
+Hybrid-Sprache
+
+Objekt-Orientiert
+Prozedural
+
+Generische Programmierung   // Templates 
+
+C++:  Bjarne Stroustrup   C with Classes
+
+Alexander Alexandrowitsch Stepanow : Generische Prog.
+
+Bibliothek: Standard Template Library  // 
+
+==============================================
+
+Regelset:
+
+BIS C++ 17 / 20:
+
+Wie ist das Regelwerk:   Reagierend.
+
+Ab C++ 20: Concepts.
+
+C#: Reflection
+
+C++: Reflection für Arme
+
+'Calculator': the associated constraints are not satisfied
+
+Wie ist das Regelwerk:   Proaktives.
+
+C / C++:
+
+Regelwerk für implizite Datentypkonvertierung:
+
+int + long = long
+
+short + int = int
+
+float + int = float
+
+// ==========================================
+
+auto:
+
+A) Vereinbarung von Variablen
+
+B) Rückgabetyp
+
+C) auto als PARAMETER
+
+--------------------------------------------
+
+=======> STL
+
+Brace 
+
+Lambda
+
+Neue Form der Initialisierung
+
+B:  Brace  // geschweiften Klammern
+
+        double d1 = ival;      // Compiles
+00007FF6144F91B0  cvtsi2sd    xmm0,dword ptr [ival]  
+00007FF6144F91B5  movsd       mmword ptr [d1],xmm0  
+
+
+0XCCCCCCCCCCCCCC
+
+0XDDDDDDDDDDDDDD
+
+0XDCDCDCDCDCDCDC
+
+
+        int intArray7[10]{ };
+00007FF7ED30A3A9  lea         rax,[intArray7]  
+00007FF7ED30A3B0  mov         rdi,rax  
+00007FF7ED30A3B3  xor         eax,eax  
+00007FF7ED30A3B5  mov         ecx,28h  
+00007FF7ED30A3BA  rep stos    byte ptr [rdi]  
+
+Frage:
+
+Setzen wir Brace Init. ein ???
+
+A) {}
+
+B) bei "altem" Code: Nein.
+
+C) Bei neuem Code: sehr wohl 
+
+==========================================
+
+Lambdas:
+
+a) Historisch.
+
+b) Beobachtung:
+
+   Es gibt sehr wohl viele neue C++ Konzepte.
+
+   =======> Viele werden auf VORHANDENES abgebildet !!!
+
+
+std::vector:  Wird auch noch separat (STL) eingeführt.
+
+std::sort ( p1, p2, p3  )
+
+A)  glob. , freie Funktionen können an andere
+    Funktionen übergeben werden.
+
+B) Aufrufbares Objekt // Funktor // Callable Object:
+
+ Eine Klasse, die den operator() implementiert
+                               // überlädt.
+
+=====================================
+
+Eine freie Funktion: KEIN Objekt.
+
+Callable object: Objekt.
+
+Lambda: OBJEKT.
+
+===> Lambda ist eine "Funktion". umgangssprachlich
+
+===> Exakt: Lambda ist ein Ojekt.
+
+Funktion:     std::bind // std::funtion
+
+term does not evaluate to a
+function taking 2 arguments
+
+
+Severity	Code	Description	Project	File	Line	Suppression State	Details
+Error	C2064	term does not evaluate
+to a function taking 2 arguments
+
+Seminar_DS_2026_Modern_Cp
+
+C:\Program Files\Microsoft Visual Studio\2022\Comm
+
+
+include\xutility.h	1597		
+
+'test_xxxxx': local function definitions are illegal
+
+
+Cpp  Insights:
+
+===========================================================
+
+Lambdas:
+
+Auf die Schnelle: Ein Lambda ist eine
+                  anonyme Funktion
+
+Exakter:
+
+Ein Lambda ist ein Objekt einer (anonymen) Klasse,
+die den Operator operator() realisiert.
+
+Konsequenz:
+
+Ein Lambda-Objekt kann Daten aufnehmen
+aus der Umgebung: Als Kopie oder als Referenz.
+
+
+
+
+==============================================
+
+OO:
+
+Objekt: Methoden + Member
+
+Lambda: Objekt
+
+==============================================
+
+STL
+
+===> 
+
+Gewissen Charme
+
+Building Blocks:    Indices gibt es nicht mehr 
+
+   Funktionalität:  Lambdas
+
+=======================================================
+
+Getting Started STL
+
+== STL Container   // Hält Daten
+== STL Iterator
+
+== STL Algorithmen
+
+std::vector
+std::list      // linked list // Verkettete Liste
+std::queue
+
+Idee:
+
+Design Ziel:  Man möchte Container
+              austauschen können.
+
+
+== STL Container   // Hält Daten
+
+
+   Der Zugriff auf Elemente wird abstrahiert.
+
+   Begriff einer Position in einem Container
+   
+   Was kann man mit einer Position machen:
+
+   == Element an der Position auslesen:  operator*
+   == Gehe zur nächsten Position:        operator++
+   == Zwei Position vergleichen          operator==
+
+   Wie kommen wir zu einer Position: KONTRAKT
+
+   JEDER STL Container MUSS zwei Methoden: begin(), end()
+
+   operator[]: Geht im Regelfall nicht.
+
+== STL Iterator
+
+== Zugriff auf Elemente
+
+
+Alt:   typedef
+
+Neu:   using 
+
+C# vs. C++:   UB  - Undefined Behaviour
+

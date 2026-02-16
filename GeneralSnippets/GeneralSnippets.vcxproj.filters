@@ -663,7 +663,10 @@
     <ClCompile Include="Seminar_02_Topic_Big_Three.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Seminar_03_Topic_ZZ.cpp">
+    <ClCompile Include="Seminar_03_Topic_Templates.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Seminar_04_Topic_STL.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

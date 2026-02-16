@@ -302,7 +302,8 @@
     <ClCompile Include="RValueLValue\RValueLValue.cpp" />
     <ClCompile Include="Seminar_01_Topic_References.cpp" />
     <ClCompile Include="Seminar_02_Topic_Big_Three.cpp" />
-    <ClCompile Include="Seminar_03_Topic_ZZ.cpp" />
+    <ClCompile Include="Seminar_03_Topic_Templates.cpp" />
+    <ClCompile Include="Seminar_04_Topic_STL.cpp" />
     <ClCompile Include="SFINAE_EnableIf\Module_Sfinae.ixx" />
     <ClCompile Include="SFINAE_EnableIf\Sfinae.cpp" />
     <ClCompile Include="SharedPtr\Module_SharedPtr.ixx" />

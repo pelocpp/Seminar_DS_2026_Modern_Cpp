@@ -16,7 +16,15 @@ namespace RuleofThree {
     public:
         // c'tors and d'tor
         BigData();
+
+        BigData(const BigData&) = delete;
+
         BigData(std::size_t, int);
+        ~BigData();
+
+        //operator
+
+        BigData& operator = (const BigData& other);
 
     public:
         // getter
@@ -31,16 +39,37 @@ namespace RuleofThree {
         m_data = nullptr;
     }
 
+    BigData::~BigData()
+    {
+        delete m_data;
+    }
+
     BigData::BigData(std::size_t size, int preset) {
         // create buffer
-        m_size = size;
-        m_data = new int[m_size];
+        m_size = size;            
+        m_data = new int[m_size]; // "array-new"
+        int* ptr = new int;       // scalar-new
 
         // initialize buffer
-        for (std::size_t n{}; n != m_size; ++n) {
+        for (std::size_t n = 0; n != m_size; ++n) {
             m_data[n] = preset;
         }
     }
+
+    // 
+    BigData& BigData::operator = (const BigData& other)
+    {
+        // linke Seite freigeben
+        delete[] m_data;
+
+        int* tmp = new int[other.m_size];
+
+        // Umkopieren: Von other nach tmp
+        // TBD
+
+        return *this;
+    }
+
 
     // getter
     std::size_t BigData::size() const {
@@ -74,8 +103,8 @@ void seminar_topic_02_big_three()
 {
     using namespace RuleofThree;
 
-    test_01_big_data();
-    // test_02_big_data();
+  //  test_01_big_data();
+    test_02_big_data();
 }
 
 // =====================================================================================

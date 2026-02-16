@@ -13,7 +13,14 @@ import std;
 
 void seminar_topic_01_references();
 void seminar_topic_02_big_three();
-void seminar_topic_zz();
+void seminar_topic_03_templates();
+void seminar_topic_04_stl();
+
+
+static bool compare(int n1, int n2) {
+    return n1 < n2;
+}
+
 
 int main()
 {
@@ -25,9 +32,10 @@ int main()
     // main entry points code snippets
     try
     {
-        seminar_topic_01_references();
+        //seminar_topic_01_references();
         //seminar_topic_02_big_three();
-        // seminar_topic_zz();
+        //seminar_topic_03_templates();
+        seminar_topic_04_stl();
 
         //main_accumulate();
         //main_algorithms();
@@ -40,7 +48,7 @@ int main()
         //main_auto();
         //main_back_inserter();
         //main_bind();
-        //main_brace_initialization();
+       // main_brace_initialization();
         //main_casts();
         //main_common_type();
         //main_concepts_requires_classes();
@@ -68,7 +76,7 @@ int main()
         //main_initializer_list();
         //main_input_output_streams();  
         //main_invoke();
-        //main_lambdas();
+       // main_lambdas();
         //main_lambda_and_closure();
         //main_lambdas_this_closure();
         //main_literals();
