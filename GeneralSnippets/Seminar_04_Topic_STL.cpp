@@ -1,7 +1,14 @@
-
 #include <vector>
 #include <list>
 #include <iostream>
+
+// Capacity
+// std::for_each
+// std::generate
+// std::find
+// std::fill
+
+// Generische Algorithmen
 
 void seminar_topic_04_stl_01()
 {
@@ -118,15 +125,29 @@ void seminar_topic_04_stl_05()
 {
     MyContainer<ElemType> numbers;
 
-    ElemType elem1;
-    MyContainer<ElemType>::value_type elem2;
+    ElemType elem1{};
+    MyContainer<ElemType>::value_type elem2{};
 
-    decltype (numbers[0])  elem3;
+    numbers.push_back(1);
+    numbers.push_back(2);
+    numbers.push_back(3);
 
-    // std::vector<int> numbers;
-    //std::list<int> numbers;
+    auto pos = numbers.begin();
+    auto end = numbers.end();
 
-    numbers.push_back(elem);
+    while (pos != end) {
+
+        auto elem = *pos;
+        std::cout << elem << std::endl;
+        ++pos;
+    }
+}
+
+void seminar_topic_04_stl_06()
+{
+    std::vector<int> numbers;
+
+    numbers.push_back(1);
     numbers.push_back(2);
     numbers.push_back(3);
 
@@ -143,7 +164,10 @@ void seminar_topic_04_stl_05()
 
 void seminar_topic_04_stl()
 {
-   // seminar_topic_04_stl_01();
-   // seminar_topic_04_stl_02();
-    seminar_topic_04_stl_03();
+    //seminar_topic_04_stl_01();
+    //seminar_topic_04_stl_02();
+    //seminar_topic_04_stl_03();
+    //seminar_topic_04_stl_04();
+    //seminar_topic_04_stl_05();
+    seminar_topic_04_stl_06();
 }
