@@ -161,7 +161,8 @@ namespace EraseRemoveIdiom
 
         std::println("3. Element: {}", *it);
 
-        vec.erase(it);
+        // vec.erase(it);
+        it = vec.erase(it);
 
         std::println("3. Element: {}", *it);  // ???
     }
@@ -194,7 +195,7 @@ namespace EraseRemoveIdiom
         std::vector<int>::iterator last = std::remove_if(
             vec.begin(),
             vec.end(),
-            [] (int elem) { return elem % 2 == 1; }
+            [] (auto elem) { return elem % 2 == 1; }
         );
 
         vec.erase(last, vec.end());
@@ -276,7 +277,7 @@ void main_erase_remove_idiom()
     test_removing_elements_21();
     test_removing_elements_22();
 
-    // test_removing_elements_30();    // crashes - by design
+   test_removing_elements_30();    // crashes - by design
     test_removing_elements_31();
 
     test_removing_elements_40();

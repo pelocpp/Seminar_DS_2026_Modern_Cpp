@@ -177,7 +177,7 @@ void seminar_topic_04_stl_07()
     std::for_each(
         numbers.begin(),
         numbers.end(),
-        [](const int& elem) {
+        [](const auto& elem) {
            // elem = elem + 10;
             std::cout << elem << " ";
         }
@@ -197,7 +197,7 @@ void seminar_topic_04_stl_08()
 
     numbers.reserve(80);  // !!!!!!!!!!!!!!!!!
 
-    for (std::size_t n{}; n != 100; ++n) {
+    for (int n{}; n != 100; ++n) {
 
         numbers.push_back(2 * n);
         std::cout << "Size: " << numbers.size() << ", Capacity: " << numbers.capacity() << std::endl;
@@ -250,6 +250,38 @@ void seminar_topic_04_stl_10()
         }
     );
 }
+
+void seminar_topic_04_stl_11()
+{
+    std::vector<int> numbers{ 10, 11, 12, 13, 14 };
+
+    // Suche nach einem Element
+
+    //std::vector<int>::iterator pos = std::find(
+    //    numbers.begin(), 
+    //    numbers.end(),
+    //    11
+    //);
+
+    // gibt es ein Element > 11
+    auto pos = std::find_if(
+        numbers.begin(),
+        numbers.end(),
+        [] (auto elem)  {
+            return elem > 11;
+        }
+    );
+
+    if (pos == numbers.end()) {
+        std::cout << "Not found" << std::endl;
+    }
+    else {
+        std::cout << "Found: " << *pos << std::endl;
+    }
+
+
+}
+
 void seminar_topic_04_stl()
 {
     //seminar_topic_04_stl_01();
@@ -261,5 +293,6 @@ void seminar_topic_04_stl()
     //seminar_topic_04_stl_07();
     //seminar_topic_04_stl_08();
     //seminar_topic_04_stl_09();
-    seminar_topic_04_stl_10();
+   // seminar_topic_04_stl_10();
+    seminar_topic_04_stl_11();
 }

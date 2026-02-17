@@ -344,3 +344,30 @@ for (   int elem   :  container ) {
 
 
 C++ 11:  Range - based for Loop
+
+
+
+warning C4834:
+discarding return value of function
+with [[nodiscard]] attribute
+
+// ================================
+
+auto zum DRITTEN:
+
+auto als PARAMETER.
+
+
+// ================================
+
+STL
+
+Algorithmen
+Lambdas
+auto
+
+Spezialthema:  Entfernen von Elementen
+
+Eager  Tue es jetzt   // erase
+
+Lazy   Tue es wenn es sein muss  // remove

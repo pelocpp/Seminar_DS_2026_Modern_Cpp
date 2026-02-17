@@ -206,7 +206,9 @@ namespace GenericLambdasExample {
     static void test_01()
     {
         // define a generic lambda
-        auto isGreaterThanFifty = [](auto n) { return n > 50; };
+        auto isGreaterThanFifty = [](auto n) {
+            return n > 50; 
+            };
 
         std::vector<int> intValues{ 44, 65, 22, 77, 2 };
 
@@ -231,6 +233,14 @@ namespace GenericLambdasExample {
         if (it2 != doubleValues.end()) {
             std::cout << "Found a value: " << *it2 << std::endl;
         }
+
+        //std::vector<std::string> stringValues{ "asd"};
+
+        //auto it3 = std::find_if(
+        //    stringValues.begin(),
+        //    stringValues.end(),
+        //    isGreaterThanFifty
+        //);
     }
 
     template <typename T>
