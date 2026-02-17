@@ -23,7 +23,7 @@ namespace Algorithms {
 #endif
 
     // need array in global data space, stack isn't suited for large objects
-    std::array<double, ArraySize> values;
+    std::array<double, ArraySize> values;  // C++
     std::array<double, ArraySize> source;
     std::array<double, ArraySize> target;
 }
@@ -225,7 +225,7 @@ namespace Algorithms {
             std::for_each(
                 values.begin(),
                 values.end(),
-                [](auto& elem) { elem = 123.0; }
+                [](double& elem) { elem = 123.0; }
             );
         }
 
@@ -235,7 +235,7 @@ namespace Algorithms {
 
             ScopedTimer watch{};
 
-            for (auto& elem : values) {
+            for (double& elem : values) {
                 elem = 123.0;
             }
         }
@@ -249,7 +249,7 @@ namespace Algorithms {
             std::generate(
                 values.begin(),
                 values.end(),
-                []() { return 123.0; }
+                [] () { return 123.0; }
             );
         }
 
@@ -787,21 +787,21 @@ namespace Algorithms {
 
 void main_algorithms()
 {
-    // initialization of std::vector or std::array with a constant value
-    Algorithms::Initialization_Vector_Constant_Value::test_vector_constant_initialization();
+    //// initialization of std::vector or std::array with a constant value
+    //Algorithms::Initialization_Vector_Constant_Value::test_vector_constant_initialization();
     Algorithms::Initialization_Array_Constant_Value::test_array_constant_initialization();
 
-    // initialization of std::vector or std::array with a a varying value
-    Algorithms::Initialization_Vector_Varying_Value::test_vector_varying_initialization();
-    Algorithms::Initialization_Array_Varying_Value::test_array_varying_initialization();
+    //// initialization of std::vector or std::array with a a varying value
+    //Algorithms::Initialization_Vector_Varying_Value::test_vector_varying_initialization();
+    //Algorithms::Initialization_Array_Varying_Value::test_array_varying_initialization();
 
-    // using algorithms for copying ranges (std::vector or std::array)
-    Algorithms::Copying_Vectors::test_vector_copying();
-    Algorithms::Copying_Arrays::test_array_copying();
+    //// using algorithms for copying ranges (std::vector or std::array)
+    //Algorithms::Copying_Vectors::test_vector_copying();
+    //Algorithms::Copying_Arrays::test_array_copying();
 
-    // using algorithms for elementary calculations (std::vector or std::array)
-    Algorithms::Elementary_Calculations_With_Vectors::test_vector_sum_calculation();
-    Algorithms::Elementary_Calculations_With_Arrays::test_array_sum_calculation();
+    //// using algorithms for elementary calculations (std::vector or std::array)
+    //Algorithms::Elementary_Calculations_With_Vectors::test_vector_sum_calculation();
+    //Algorithms::Elementary_Calculations_With_Arrays::test_array_sum_calculation();
 }
 
 // =====================================================================================

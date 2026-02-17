@@ -25,11 +25,12 @@ C#:     Referenz-basiert
 C#:     String s = new String();
         "Alles" liegt am HEAP
 
+        KOPIE
                 int m = value;
 00007FF71E6D0B4F  mov         eax,dword ptr [value]  
 00007FF71E6D0B55  mov         dword ptr [m],eax  
 
-
+        REFERENZ
         int m = value;
 00007FF71E6D0B00  mov         rax,qword ptr [value]  
 00007FF71E6D0B07  mov         eax,dword ptr [rax]  
@@ -296,3 +297,50 @@ Neu:   using
 C# vs. C++:   UB  - Undefined Behaviour
 
 ======================================================
+
+STL
+
+Container
+Iteratoren
+Algorithmen
+
+    std::for_each(
+        numbers.begin(),
+        numbers.end(),
+        [](int elem) {
+            std::cout << elem << " ";
+        }
+    );
+
+STD Ranges:    ===> 
+
+    std::ranges::for_each(
+        numbers,
+        [](int elem) {
+            std::cout << elem << " ";
+        }
+    );
+
+std::vector
+
+==> Lineare Suche
+
+std:set
+
+Löschen  // Suchen
+
+for_each:
+
+In allen anderen Sprachen:
+
+for_each (   int elem   :  container ) {
+
+}
+
+for (   int elem   :  container ) {
+
+}
+
+
+
+C++ 11:  Range - based for Loop

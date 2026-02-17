@@ -35,10 +35,10 @@ int main()
         //seminar_topic_01_references();
         //seminar_topic_02_big_three();
         //seminar_topic_03_templates();
-        seminar_topic_04_stl();
+      //  seminar_topic_04_stl();
 
         //main_accumulate();
-        //main_algorithms();
+        main_algorithms();
         //main_allocator();
         //main_any();
         //main_argument_dependent_name_lookup();
