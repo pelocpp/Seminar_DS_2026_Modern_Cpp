@@ -21,7 +21,15 @@ namespace Exercises_MoveSemantics {
         public:
             Person() {}
             Person(const std::string& name) : m_name{ name } {}
-            ~Person() {}
+
+            // move c'tor
+            Person(Person&& other) noexcept
+            {
+                m_name = std::move(other.m_name);
+                m_values = std::move(other.m_values);
+            }
+         
+            ~Person() { std::cout << "~Person"; }
 
             void addValue(int value) {
                 m_values.push_back(value);
@@ -58,8 +66,8 @@ namespace Exercises_MoveSemantics {
 
             // insert person into a collection
             std::vector<Person> persons;
-            persons.push_back(dagobert);
-            // persons.push_back(std::move(dagobert));
+           // persons.push_back(dagobert);
+            persons.push_back(std::move(dagobert));
 
             // print person again
             std::cout << "Person: " << dagobert << std::endl;

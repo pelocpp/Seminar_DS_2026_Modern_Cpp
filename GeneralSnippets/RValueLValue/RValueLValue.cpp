@@ -9,11 +9,15 @@ namespace LValueRValue {
     // lvalue reference
     static void sayHello(const std::string& message) {
         std::println("sayHello [std::string&]:  {}", message);
+    
+       // message[0] = '?';
     }
 
     // rvalue reference
     static void sayHello(std::string&& message) {
         std::println("sayHello [std::string&&]: {}", message);
+    
+        message.clear();
     }
 
     static void test01() {
@@ -21,16 +25,18 @@ namespace LValueRValue {
         std::string a = "Hello";
         std::string b = " World";
 
-        sayHello(a);
-        sayHello(a + b);
+        sayHello(a);   // Mit Name
+
+        sayHello(a + b);  // anon. Objekt
     }
 
     // -------------------------------------------------------------------
 
     static void helper(std::string&& message)
     {
-        sayHello(message);
-        // sayHello(std::move(message));    // casting an lvalue to an rvalue
+        sayHello( std::move ( message )  ); // && RValue: Typen sind identisch   
+    
+                           // & LValue: message ist eine Name eines Objekts 
     }
 
     static void test02()
@@ -57,6 +63,7 @@ namespace LValueRValue {
         int b = 3;
 
         int& ri = a;          // works: (lvalue) reference to a (named) variable
+        int&& ri2 = 123;
 
         // int& i = 123;      // invalid: (lvalue) reference to a constant
 
@@ -74,7 +81,7 @@ void main_rvalue_lvalue()
 {
     using namespace LValueRValue;
     test01();
-    test02();
+    test02(); 
     test03();
     test04();
 }

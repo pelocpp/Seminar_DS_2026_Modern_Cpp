@@ -371,3 +371,34 @@ Spezialthema:  Entfernen von Elementen
 Eager  Tue es jetzt   // erase
 
 Lazy   Tue es wenn es sein muss  // remove
+
+// ================================
+
+Referenzen
+
+int n;
+
+int& ra = n;
+
+int && 
+
+Whyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy
+------------------------------------
+
+RValue
+
+Move - Semantik
+---------------
+
+i)  0x000001ff81735 340   // am Stack // wird zerstört
+
+ii) 0x000001ff81735 6c0   // im Vektor // Kopie
+
+-------------
+
+i) 0x000001cba0c75 810
+
+
+
+
+

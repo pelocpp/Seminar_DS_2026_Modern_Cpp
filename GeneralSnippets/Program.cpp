@@ -54,7 +54,7 @@ int main()
         //main_concepts_requires_classes();
         //main_concepts_requires_functions();
         //main_const_variants();
-        //main_constexpr();
+        main_constexpr();
         //main_constexpr_crc();
         //main_constructor_invocations();
         //main_copy_move_elision();
@@ -62,7 +62,7 @@ int main()
         //main_crtp();
         //main_decltype();
         //main_default_initialization();
-        main_erase_remove_idiom();
+        //main_erase_remove_idiom();
         //main_expression_templates();
         //main_exception_safety();
         //main_expected();
@@ -126,7 +126,7 @@ int main()
         //main_virtual_override_final();
         //main_weak_pointer();
 
-        //main_exercises();
+       // main_exercises();
     }
     catch (const std::exception& ex) {
         std::println("Exception: {}", ex.what());
