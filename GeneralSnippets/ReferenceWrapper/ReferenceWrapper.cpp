@@ -16,7 +16,7 @@ namespace MyReferenceWrapper {
 
         std::cout << data << std::endl;
 
-        // std::thread t{ task, data };  // doesn't compile
+      //  std::thread t0{ task, data };  // doesn't compile
 
         std::thread t{ task, std::ref(data) };      // works
 

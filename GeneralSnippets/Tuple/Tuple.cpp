@@ -12,7 +12,7 @@ namespace TupleSamples {
     static void test_01()
     {
         // declaring tuple 
-        std::tuple <char, int, double> values;
+        std::tuple < char, int, double > values;
 
         // assigning values to tuple using std::make_tuple
         values = std::make_tuple('A', 123, 123.456);
@@ -70,10 +70,13 @@ namespace TupleSamples {
 
         std::vector<Row> mySheet;
 
+        std::vector<std::tuple<int, char, double, std::string>> mySheet2;
+
         mySheet.push_back(row1);
         mySheet.push_back(row2);
         mySheet.push_back(row3);
 
+        // for_each
         for (const Row& row : mySheet) {
             std::println("{}", rowToString(row));
         }
@@ -102,6 +105,7 @@ namespace TupleSamples {
         std::println("Value: {}", val);
         std::println("Name:  {}", name);
 
+        // Structured Binding UND Range-based for-Loop
         for (const auto& [id, abbr, val, name] : mySheet)
         {
             std::println("Id:    {}", id);

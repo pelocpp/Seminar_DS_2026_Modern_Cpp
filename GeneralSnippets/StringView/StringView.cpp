@@ -8,6 +8,7 @@ namespace StringViewDemonstration {
 
     static void test_01()
     {
+        // const char * 
         std::string_view sv{ "AAAAAAAAAAAAAAAAAAAAAAAAAAAA" };  // Konstante Zeichenkette
 
         std::string s{ "AAAAAAAAAAAAAAAAAAAAAAAAAAAA" };        //  Heap
@@ -18,13 +19,24 @@ namespace StringViewDemonstration {
 
     static void test_02()
     {
-        std::string s{ "AAAAAAAAAAAAAAAAAAAAAAAAAAAA" };
+        auto sss = sizeof(std::string);
+
+        std::string s{ "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" };
+
+        std::string sub = s.substr(20, 10);
 
         std::string_view sv{ s };
 
+        // substring: Teilzeichenkette
+        // std::string: substr (10, 20) ==> Neues Objekt
+
+        // string_view: Teilzeichenkette
+        // std::string: substr (10, 20) ==> Neues Objekt
+
+
         std::println("{}", sv);
 
-        s += "BBBBBBBBBBBBBBBBBBBBBBBBBBBB";        // Caution: the content of s is reallocated !
+        s += "B";        // Caution: the content of s is reallocated !
 
         std::println("{}", sv);
     }

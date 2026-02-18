@@ -557,3 +557,143 @@ std::shared_ptr
 Man kann die Lösung mit beiden Klassen 
 umsetzen.
 
+===================================================================
+
+Utility Klassen
+---------------
+
+std::optional
+
+C#:  int,  int?  - Nullable
+
+int - Variable:
+
+0 ... gültig
+
+-1 ... gültig
+
+-MAX_INT ...
+
+int-Variable: value
+bool          isValid;
+
+std::pair <>
+
+std::optional
+
+warning C4834: discarding return value of function
+with [[nodiscard]] attribute
+
+
+====================================================
+
+Zeichenketten:
+
+std::string
+
+SA_String
+
+auto cp = "1111111111111111111111111";
+
+
+"111111111111111111111111111111111111111111111111";
+
+SA_String
+SA_String_View
+
+std::string
+
+const char * 
+
+std::string_view
+
+A) const char *   Anfangsadresse
+B) Length
+
+string_view ist ein NON OWNING Container !!!!
+
+
+===================================================
+
+std::initializer_list
+
+Sie ist ein Light-Weight Container:
+
+size()
+begin()
+end()
+
+
+std::vector<int> vec (10);  // Size: 10 - Alle: 0
+
+std::vector<int> vec {10};  // Size: 1  - Wert: 10
+
+
+std::string s { 10, 20 };    // Length: 2 
+
+std::string s (10, 20 );     // Length: 10 - 
+
+
+=============================================
+
+Arrays
+
+int numbers [100];
+
+
+Tupel:
+
+Structured Binding
+
+std::tuple
+
+ist ähnlich zu einer Struktur - für Schreibfaule.
+
+
+std::tuple
+
+REST Daten ... Interface Hell // 10 Layer: UI
+
+DTO Data Transfer Object
+
+========================================================
+
+std::variant
+-------------
+
+Ein std::variant kann Daten unterschiedlichen Typs haben,
+zu einem Zeitpunkt aber nur ein BESTIMMTES Datum.
+
+Excel:  Sheet - Zelle // Cell:
+
+Zeichenkette, num. Wert, Datum, Währung (Currency), ..
+
+man kann einen Variant "besuchen"  :)
+
+std::visit
+
+
+if
+
+if compile_time
+
+C++
+
+OO
+
+GP
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

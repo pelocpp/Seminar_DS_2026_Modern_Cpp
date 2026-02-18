@@ -2,6 +2,10 @@
 // Variant.cpp // std::variant
 // =====================================================================================
 
+module;
+
+#include <variant>
+
 module modern_cpp:variant;
 
 namespace VariantDemo {
@@ -109,13 +113,62 @@ namespace VariantDemo {
 
     // -------------------------------------------------------------------
 
+    // primary template
+    template <class T>
+    struct my_remove_reference {
+        using type = T;
+    };
+
+    // template specialization
+    template <>
+    struct my_remove_reference<char> {
+        using type = char;
+    };
+
+    // second template specialization
+    template <class T>
+    struct my_remove_reference<T&> {
+        using type = T;
+    };
+
+
     static void test_04() {
 
         std::variant<int, double, std::string> v{ 123 };
 
         // using a generic visitor (matching all types in the variant)
         auto visitor = [](const auto& elem) {
-            std::println("{}", elem);
+
+            using Type = decltype(elem);
+
+            using TypeWithoutRef = my_remove_reference<Type>::type;
+
+            using TypeWithoutRefAndConst = std::remove_const<TypeWithoutRef>::type;
+
+            if constexpr ( std::is_same<TypeWithoutRefAndConst, int>::value == true )
+            {
+                std::println("int: {}", elem);
+            }
+            else if constexpr (std::is_same<TypeWithoutRefAndConst, double>::value == true)
+            {
+                std::println("double: {}", elem);
+            }
+            else if constexpr (std::is_same<TypeWithoutRefAndConst, std::string>::value == true)
+            {
+                std::println("std::string: {}", elem);
+
+                std::println("length: {}", elem.size());
+            }
+            else
+            {
+                std::println("Unbekannt: {}", elem);
+
+                // 
+                // #error "asdasd"
+
+                // static_assert ("");
+
+            }  
         };
 
         std::visit(visitor, v);
@@ -337,17 +390,17 @@ void main_variant()
 {
     using namespace VariantDemo;
 
-    test_01();
-    test_02();
-    test_03();
+    //test_01();
+    //test_02();
+    //test_03();
     test_04();
-    test_05();
-    test_06();
-    test_07();
-    test_08();
-    test_09();
-    test_10();
-    test_11();
+    //test_05();
+    //test_06();
+    //test_07();
+    //test_08();
+    //test_09();
+    //test_10();
+    //test_11();
 }
 
 // =====================================================================================

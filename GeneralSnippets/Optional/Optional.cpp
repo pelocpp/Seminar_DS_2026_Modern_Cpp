@@ -12,6 +12,11 @@ namespace OptionalExamples {
 
     static void test_01_optional() {
 
+      //  int value;
+        // SA_Integer value2;
+
+        auto s = sizeof(std::optional<int>);
+
         std::optional<int> someValue{ 123 };
 
         if (someValue.has_value()) {
@@ -40,19 +45,26 @@ namespace OptionalExamples {
     class Contact
     {
     private:
-        std::optional<std::string> m_phone;
+        std::optional<std::string> m_phone; // ""
 
     public:
         Contact() : m_phone{ std::nullopt } {}
 
         void setPhone(const std::string& phone) { m_phone = phone; }
 
-        std::optional<std::string> getPhone() { return m_phone; }
+        [[ nodiscard ]] std::optional<std::string> getPhone() { return m_phone; }
     };
 
     static void test_02_optional() {
 
         Contact contact{};
+
+    //    contact.getPhone();
+
+    //    std::find_if(XX, XXX, XX);
+
+    //    printf("adsdfsd %d", 123);
+
 
         if (contact.getPhone()) {
             std::println("Number: {}", contact.getPhone().value());
@@ -64,7 +76,7 @@ namespace OptionalExamples {
         contact.setPhone("123456789");
 
         if (contact.getPhone()) {
-            std::println("Number: {}", *contact.getPhone());
+            std::println("Number: {}", contact.getPhone().value());
         }
         else {
             std::println("No Number found!");
