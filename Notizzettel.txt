@@ -4,7 +4,9 @@ Firmenseminar "Modern C++" Diamant Software GmbH Bielefeld
 
 Peter Loos
 
-Guten Morgen
+peter.loos@gmx.de
+
+https://github.com/pelocpp
 
 =====================================================================
 
@@ -398,7 +400,160 @@ ii) 0x000001ff81735 6c0   // im Vektor // Kopie
 
 i) 0x000001cba0c75 810
 
+=====================================================================
+
+RValue - Referenzen
+
+Verschiebe Semantik
+
+Smart - Pointer
+
+=====================================================================
+
+        constexpr Complex c3{ c1 + c2 };
+00007FF7DA1C1890  movss       xmm0,dword ptr [__real@40800000 (07FF7DA40D8D4h)]  
+00007FF7DA1C1898  movss       dword ptr [c3],xmm0  
+00007FF7DA1C18A0  movss       xmm0,dword ptr [__real@40a00000 (07FF7DA40D8D8h)]  
+00007FF7DA1C18A8  movss       dword ptr [rbp+8Ch],xmm0  
+
+4.0  und 5.0
+
+        Complex c3{ c1 + c2 };
+00007FF7D22515DF  lea         r8,[c2]  
+00007FF7D22515E3  lea         rdx,[c3]  
+00007FF7D22515EA  lea         rcx,[c1]  
+00007FF7D22515EE  call        ConstExprClassesAndObjects::Complex::operator+ (07FF7D21B7575h)  
+00007FF7D22515F3  nop 
 
 
 
+        // IIFE - Immediately Invoked Functional Expression:
+        // some more real-world examples: regarding argument data types
+
+
+        const char*   //  std::string_view
+
+========================================================
+
+Smart Pointer
+
+Was ist das Problem mit new ???
+
+Wer darf wann das delete aufrufen ??????????
+
+// Lösung // Alternative
+
+Idee:
+-----
+
+OO ==> Objekte
+
+Konstruktoren // Destruktoren
+
+C++ ==> Destruktor: Am Ende des Scopes
+        
+        Deterministisch
+
+Idee: Man verstecke Zeiger (new)
+
+      in Hüllenklassen:
+
+      Destruktor ==> delete
+
+auto_ptr: deprecated
+
+std::unique_ptr
+
+std::shared_ptr
+std::weak_ptr
+
+Strategie: std::unique_ptr
+
+Es kann zu einem Zeitpunkt im Programm
+nur EINEN Besitzer eines std::unique_ptr-Objekts geben.
+
+Kopieren: Geht nicht.
+
+Strategie: std::shared_ptr
+
+Es kann zu einem Zeitpunkt im Programm
+MEHRERE Besitzer eines std::shared_ptr-Objekts geben.
+
+Kopieren: Geht.
+
+Erste Destruktor: NICHT: Delete
+
+Zähler aller Besitzer // Reference Counter  ==> 0
+
+C#:  Referenz
+
+============================================================
+
+Go for Unique   // Besitzer
+
+Go for Shared   // Besitzer
+
+Beobachtung: std::shared_ptr:
+
+   Dieser Funktioniert nicht IMMER ???
+
+std::weak_ptr
+
+C#:   Events
+
+m_source += new Client();
+
+m_source -= new Client();
+
+
+=========================================
+
+Zyklen: Bei uns doch nicht :)
+
+Observer - Pattern
+
+A) Ein Objekt (Source) hat Zustand,
+
+   der von Interesse ist.
+
+b) Es gibt Beobachter (Clients),
+   die sich für den Zustand interessieren
+
+   Beobachter =====> Source
+
+C) Beobachter melden sich an der Source
+   an  // register // attach
+       unregister // Dettach
+
+D) Source:  Eine Liste von Beobachtern verwalten 
+  
+   Source ======> Beobachter
+
+i) Source:      Shared_Ptr
+
+ii) Beobachter: Shared_Ptr
+
+iii) In der Source:  
+
+     Liste von Beobachtern
+
+     // Neeeeeeeeeeeeeee
+     std::vector<std::shared<Observer>>
+
+     // Go this way ....
+     std::vector<std::weak<IObserver>>
+
+std::unique
+
+std::shared_ptr
+std::weak_ptr
+
+========================================
+
+std::unique
+
+std::shared_ptr
+
+Man kann die Lösung mit beiden Klassen 
+umsetzen.
 

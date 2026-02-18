@@ -17,6 +17,14 @@ namespace ConstExprVariables {
 
 #define          PI   3.14159265359
 
+// C Präprozessor
+#define          Max  1000
+
+    int feld[Max];
+
+   // int feld[1000];
+
+
     static void testVariables() {
 
         std::println("Pi: {}", Pi);
@@ -51,7 +59,7 @@ namespace ConstExprFunctions {
     // ======================================================
     // calculate the number multiplied by itself
 
-    #define   SQUARE(x)             x * x
+    #define   SQUARE(x)     x * x
 
     static constexpr auto square (auto x) {
         return x * x;
@@ -67,7 +75,10 @@ namespace ConstExprFunctions {
 
         std::size_t a{ 1 };
         std::size_t b{ 2 };
-        std::size_t value{ SQUARE(a + b) };       // value == 5: Wrong result !!!
+        std::size_t value{ SQUARE(a + b) };   
+       // std::size_t value{ a + b * a + b }; 
+        
+        // value == 5: Wrong result !!!
         assert(value == 5);
     }
 
@@ -75,10 +86,11 @@ namespace ConstExprFunctions {
 
         // Note: constexpr functions don't have side effects !!!
 
-        constexpr std::size_t a{ 1 };
+        constexpr std::size_t a{ 2 };
         constexpr std::size_t b{ 2 };
         constexpr auto value{ square(a + b) };
-        static_assert(value == 9);                  // correct result !!!
+        
+        static_assert(value == 16);                  // correct result !!!
 
         constexpr double x{ 3.0 };
         constexpr double y{ 4.0 };
@@ -161,7 +173,8 @@ namespace ConstExprClassesAndObjects {
 
     public:
         // c'tors
-        constexpr Complex() : m_real{ }, m_imag{ } {}
+        constexpr Complex() : m_real{ }, m_imag{ } {
+        }
         constexpr Complex(float real, float imag) : m_real{ real }, m_imag{ imag } {}
 
         // getter
@@ -173,7 +186,7 @@ namespace ConstExprClassesAndObjects {
         {
             float real = m_real + other.m_real;
             float imag = m_imag + other.m_imag;
-            return { real, imag };
+            return Complex{ real, imag };
         }
     };
 
@@ -185,18 +198,18 @@ namespace ConstExprClassesAndObjects {
 
         constexpr float r1{ c1.real() };
         constexpr Complex c3{ c1 + c2 };
-        constexpr float r2{ c3.real() };
+        //constexpr float r2{ c3.real() };
 
-        // verify 'constness' with the help of disassembly and
-        // https://www.h-schmidt.net/FloatConverter/IEEE754de.html
-        
-        std::println("Real: ", c3.real());
-        std::println("Imag: ", c3.imag());
+        //// verify 'constness' with the help of disassembly and
+        //// https://www.h-schmidt.net/FloatConverter/IEEE754de.html
+        //
+        //std::println("Real: ", c3.real());
+        //std::println("Imag: ", c3.imag());
 
-        // verify compile time computing
-        static_assert (c1.real() == 1.0, "real part shoud be 1.0");
-        static_assert (c3.real() == 4.0, "real part shoud be 4.0");
-        static_assert (c3.imag() == 5.0, "imaginary part shoud be 5.0");
+        //// verify compile time computing
+        //static_assert (c1.real() == 1.0, "real part shoud be 1.0");
+        //static_assert (c3.real() == 4.0, "real part shoud be 4.0");
+        //static_assert (c3.imag() == 5.0, "imaginary part shoud be 5.0");
     }
 }
 
@@ -216,7 +229,7 @@ namespace ConstExprDynamicData {
 
     static void testDynamicData()
     {
-        constexpr int sum{ naiveSum(10) };
+        constexpr int sum{ naiveSum(6) };
         std::println("Sum from 1 up to 10: {}", sum);
     }
 }

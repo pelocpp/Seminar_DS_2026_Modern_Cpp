@@ -19,12 +19,38 @@ module;
 
 module modern_cpp:const_expr;
 
+
+
+static void test()
+{
+    [] {};
+    []() {};
+
+    []() {}();
+
+    [](int a, int b) { return a + b; };
+
+    int;
+
+    auto sum = [](int a, int b) { return a + b; };
+
+    auto result = sum(10, 11);
+
+    auto sum2 = [](int a, int b) constexpr { return a + b; };
+
+    constexpr auto result2 = sum2(20, 30);
+
+    constexpr auto result3 =
+        [](int a, int b) constexpr { return a * b; } (10.9, 20.9);
+}
+
+
 constexpr uint8_t MY_POLYNOM = 0x07;
 constexpr int TABLE_SIZE = 256;
 
 template<uint8_t POLYNOM>
 constexpr auto crcTable{
-    []() {
+    [] () {
         std::array<uint8_t, TABLE_SIZE> A {};
         for (int i = 0; i < TABLE_SIZE; i++) {
             A[i] = i;
@@ -42,6 +68,7 @@ constexpr auto crcTable{
 };
 
 constexpr auto tableBy10 = crcTable<10>;
+
 constexpr auto tableBy20 = crcTable<20>;
 
 static constexpr auto calcCRC(std::string_view data) {
